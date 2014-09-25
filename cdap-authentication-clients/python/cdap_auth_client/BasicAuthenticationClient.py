@@ -18,6 +18,7 @@ import logging
 import json
 from AbstractAuthenticationClient import AbstractAuthenticationClient
 from Credential import Credential
+from Config import Config
 
 LOG = logging.getLogger(__name__)
 
@@ -74,7 +75,8 @@ class BasicAuthenticationClient(AbstractAuthenticationClient):
     def ssl_verification_status(self):
         return self.__security_ssl_cert_check
 
-    def configure(self, config):
+    def configure(self, filename):
+        config = Config.read_from_file(filename)
         if self.__username or self.__password:
             raise ValueError(u'Client is already configured!')
 

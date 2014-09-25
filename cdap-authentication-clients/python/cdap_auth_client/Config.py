@@ -48,7 +48,8 @@ class Config(object):
     def security_ssl_cert_check(self, security_ssl_cert_check):
         self.__security_ssl_cert_check = security_ssl_cert_check
 
-    def read_from_file(self, file):
+    @staticmethod
+    def read_from_file(file):
         new_config = Config()
         json_config = None
         with open(file) as configFile:
