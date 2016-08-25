@@ -75,7 +75,7 @@ Set the CDAP connection information
 
 Example::
 
-    authentication_client.set_connection_info('localhost', 10000, False)
+    authentication_client.set_connection_info('localhost', 11015, False)
 
 This method should be called only once for each ``AuthenticationClient`` object.
 
@@ -135,7 +135,7 @@ Interactive Applications
 This example illustrates obtaining user credentials in an interactive application, and
 then configuring the Authentication Client with the retrieved credentials::
 
-    authentication_client.set_connection_info('localhost', 10000, False)
+    authentication_client.set_connection_info('localhost', 11015, False)
     properties = {}
 
     if authentication_client.is_auth_enabled():

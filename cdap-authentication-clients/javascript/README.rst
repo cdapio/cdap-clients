@@ -80,7 +80,7 @@ Create a ``CDAPAuthManager`` instance, specifying the *username* and *password* 
 Optional configurations that can be set (and their default values):
 
 - host: ``localhost`` (DNS name or IP address of the CDAP gateway server)
-- port: ``10000`` (Port number the CDAP gateway server listens on)
+- port: ``11015`` (Port number the CDAP gateway server listens on)
 - ssl: ``false`` (use HTTP protocol instead)
 
 ::
@@ -91,7 +91,7 @@ Optional configurations that can be set (and their default values):
         username: 'username',
         password: 'password'
     });
-    manager.setConnectionInfo('localhost', 10000, false);
+    manager.setConnectionInfo('localhost', 11015, false);
 
     var tokenPromise = manager.getToken();
     tokenPromise.then(function (token) {

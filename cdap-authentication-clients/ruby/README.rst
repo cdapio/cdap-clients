@@ -42,7 +42,7 @@ Create a ``CDAP::AuthenticationClient`` instance::
 Set the connection parameters (authentication server host, authentication server host
 port, SSL mode)::
 
-  authentication_client.set_connection_info('localhost',10000, true)
+  authentication_client.set_connection_info('localhost', 11015, true)
 
 Create the configuration file::
 
