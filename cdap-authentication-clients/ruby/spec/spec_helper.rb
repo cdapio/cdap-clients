@@ -12,7 +12,7 @@
 #  License for the specific language governing permissions and limitations under
 #  the License.
 
-$LOAD_PATH .push File.expand_path("../../lib", __FILE__)
+$LOAD_PATH .push File.expand_path('../../lib', __FILE__)
 
 require 'simplecov'
 require 'simplecov-rcov'
@@ -44,5 +44,5 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = "random"
+  config.order = 'random'
 end

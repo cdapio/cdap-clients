@@ -14,19 +14,19 @@
 
 require 'spec_helper'
 
-describe AuthenticationClient::AuthenticationClient do
-  let(:authentication_client) { AuthenticationClient::AuthenticationClient.new }
+describe CDAP::AuthenticationClient do
+  let(:authentication_client) { CDAP::AuthenticationClient.new }
   before do
-    authentication_client.set_connection_info('127.0.0.1', 11000, false)
+    authentication_client.set_connection_info('127.0.0.1', 11_000, false)
   end
 
   it 'instance check' do
     VCR.insert_cassette('authentication_client')
-    expect(authentication_client).to be_a AuthenticationClient::AuthenticationClient
+    expect(authentication_client).to be_a CDAP::AuthenticationClient
     VCR.eject_cassette
   end
 
-  it { expect(AuthenticationClient::AuthenticationClient).to respond_to(:new) }
+  it { expect(CDAP::AuthenticationClient).to respond_to(:new) }
 
   it { expect(authentication_client).to respond_to(:get_access_token) }
 
@@ -38,7 +38,7 @@ describe AuthenticationClient::AuthenticationClient do
     VCR.eject_cassette
     VCR.insert_cassette('authentication_client_get_access_token')
     token = authentication_client.get_access_token
-    expect(token.class).to eq AuthenticationClient::AccessToken
+    expect(token.class).to eq CDAP::AccessToken
     expect(token.value).to be_a String
     expect(token.token_type).to eq 'Bearer'
     expect(token.expires_in).to eq 86_400
@@ -50,12 +50,12 @@ describe AuthenticationClient::AuthenticationClient do
     authentication_client.auth_enabled?
     VCR.eject_cassette
     VCR.insert_cassette(
-        'invalid_credentials_authentication_client_get_access_token')
+      'invalid_credentials_authentication_client_get_access_token')
     config = YAML.load_file('spec/auth_fail.yml')
     authentication_client.configure(config)
     expect { authentication_client.get_access_token }.to raise_error(
-                                                HTTParty::ResponseError,
-                                                'Invalid username or password')
+      HTTParty::ResponseError,
+      'Invalid username or password')
     VCR.eject_cassette
   end
 
@@ -76,6 +76,5 @@ describe AuthenticationClient::AuthenticationClient do
     expect(authentication_client.username).to eq 'user'
     expect(authentication_client.password).to eq 'secret'
     expect(authentication_client.ssl_cert_check).to eq true
-
   end
 end

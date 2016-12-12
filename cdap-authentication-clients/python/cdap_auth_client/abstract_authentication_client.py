@@ -83,7 +83,7 @@ class AbstractAuthenticationClient(AuthenticationClient):
 
         ping_uri = self.__base_url + '/ping'
         LOG.debug(u"Try to get the authentication URI from "
-                  u"the gateway server: {}.", ping_uri)
+                  u"the gateway server: %s." % ping_uri)
 
         response = requests.get(ping_uri, verify=self.ssl_verification_status())
         result = None
@@ -115,7 +115,7 @@ class AbstractAuthenticationClient(AuthenticationClient):
                 request_time + self.__access_token.expires_in\
                 - self.SPARE_TIME_IN_MILLIS
             LOG.debug(u"Received the access token successfully."
-                      u" Expiration date is {}.",
+                      u" Expiration date is %s" %
                       datetime.datetime.
                       fromtimestamp(self.__expiration_time/1000)
                       .strftime(u'%Y-%m-%d %H:%M:%S.%f'))

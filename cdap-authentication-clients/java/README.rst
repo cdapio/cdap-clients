@@ -37,7 +37,7 @@ Build
 =====
 To build the Authentication Client API jar, use:
 
-.. code: console
+.. code:: console
 
   mvn clean package
 
@@ -85,7 +85,7 @@ Example:
 
 .. code:: java
 
-  authenticationClient.setConnectionInfo("localhost", 10000, false);
+  authenticationClient.setConnectionInfo("localhost", 11015, false);
 
 This method should be called only once for every ``AuthenticationClient`` object.
 

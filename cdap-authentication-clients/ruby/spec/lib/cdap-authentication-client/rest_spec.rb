@@ -14,14 +14,12 @@
 
 require 'spec_helper'
 
-describe AuthenticationClient::AuthClientRest do
+describe CDAP::AuthClientRest do
+  let(:rest) { VCR.use_cassette('rest') { CDAP::AuthClientRest.new } }
 
-  let(:rest) { VCR.use_cassette('rest') { AuthenticationClient::AuthClientRest.new } }
+  it { expect(rest).to be_a CDAP::AuthClientRest }
 
-  it { expect(rest).to be_a AuthenticationClient::AuthClientRest }
-
-  it { expect(AuthenticationClient::AuthClientRest).to respond_to(:new) }
+  it { expect(CDAP::AuthClientRest).to respond_to(:new) }
 
   it { expect(rest).to respond_to(:get) }
-
 end

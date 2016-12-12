@@ -1,4 +1,4 @@
-#  Copyright © 2014 Cask Data, Inc.
+#  Copyright © 2014-2015 Cask Data, Inc.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License"); you may not
 #  use this file except in compliance with the License. You may obtain a copy of
@@ -12,19 +12,20 @@
 #  License for the specific language governing permissions and limitations under
 #  the License.
 
-#encoding: utf-8
-$:.push File.expand_path("../lib", __FILE__)
-require "cdap-authentication-client/version"
+# encoding: utf-8
+$LOAD_PATH.push File.expand_path('../lib', __FILE__)
+require 'cdap-authentication-client/version'
 
 Gem::Specification.new do |s|
-  s.name        = "cdap-authentication-client"
-  s.version     = AuthenticationClient::VERSION
-  s.authors     = ["Yura Tolochkevych"]
-  s.email       = ["ytolochkevych@cask.co"]
-  s.summary     = "A Ruby client for authentication in Cask CDAP services"
-  s.description = "Provide a more Ruby experience when using authentication in Cask CDAP services."
+  s.name        = 'cdap-authentication-client'
+  s.version     = CDAP::VERSION
+  s.authors     = ['Cask Data, Inc.']
+  s.email       = ['ops@cask.co']
+  s.license     = 'Apache-2.0'
+  s.summary     = 'A Ruby client for authentication in Cask CDAP services'
+  s.description = s.summary
 
-  s.rubyforge_project = "cdap-authentication-client"
+  s.rubyforge_project = 'cdap-authentication-client'
 
   s.add_dependency 'httparty'
 
@@ -32,7 +33,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'simplecov-rcov'
 
-  s.require_paths = ["lib"]
+  s.require_paths = ['lib']
 
   s.files = Dir['lib/**/*.rb']
 end

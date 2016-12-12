@@ -1,4 +1,4 @@
-#  Copyright © 2014 Cask Data, Inc.
+#  Copyright © 2014-2015 Cask Data, Inc.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License"); you may not
 #  use this file except in compliance with the License. You may obtain a copy of
@@ -12,32 +12,30 @@
 #  License for the specific language governing permissions and limitations under
 #  the License.
 
-module AuthenticationClient
-
+module CDAP
   class AuthenticationClientInterface
-
-    def configure properties
-      raise 'this method should be overriden'
+    def configure(_properties)
+      fail 'This method should be overridden'
     end
 
     def get_access_token
-      raise 'this method should be overriden'
+      fail 'This method should be overridden'
     end
 
     def auth_enabled?
-      raise 'this method should be overriden'
+      fail 'This method should be overridden'
     end
 
     def invalidate_token
-      raise 'this method should be overriden'
+      fail 'This method should be overridden'
     end
 
-    def set_connection_info host, port, ssl
-      raise 'this method should be overriden'
+    def set_connection_info(_host, _port, _ssl)
+      fail 'This method should be overridden'
     end
 
     def get_required_credentials
-      raise 'this method should be overriden'
+      fail 'This method should be overridden'
     end
   end
 end

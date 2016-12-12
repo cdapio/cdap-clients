@@ -65,7 +65,7 @@ class BasicAuthenticationClient(AbstractAuthenticationClient):
             raise ValueError(u'Base authentication client'
                              u' is not configured!')
         LOG.debug(u'Authentication is enabled in the gateway server.'
-                  u' Authentication URI {}.', self.auth_url)
+                  u' Authentication URI %s.' % self.auth_url)
         base64string = base64.b64encode(
             (u'%s:%s' % (self.__username, self.__password)).encode('utf-8'))
         auth_header = json.dumps(

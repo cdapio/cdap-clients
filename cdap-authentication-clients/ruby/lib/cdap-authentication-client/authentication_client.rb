@@ -1,4 +1,4 @@
-#  Copyright © 2014 Cask Data, Inc.
+#  Copyright © 2014-2015 Cask Data, Inc.
 #
 #  Licensed under the Apache License, Version 2.0 (the "License"); you may not
 #  use this file except in compliance with the License. You may obtain a copy of
@@ -12,7 +12,7 @@
 #  License for the specific language governing permissions and limitations under
 #  the License.
 
-module AuthenticationClient
+module CDAP
   require 'cdap-authentication-client/authentication_client_interface'
   ###
   # The client class to fetch access token from the authentication server
@@ -73,14 +73,14 @@ module AuthenticationClient
         fail ArgumentError.new, 'Authentication is disabled
                                  in the gateway server.'
       end
-      if  @access_token.nil? || token_expired?
+      if @access_token.nil? || token_expired?
         request_time = Time.now.to_f * 1000
         options = { basic_auth: { username: @username, password: @password } }
         response = rest.get(@auth_url, options, @ssl_cert_check)
         token_value = response['access_token']
         token_type  = response['token_type']
         expires_in = response['expires_in']
-        @expiration_time  = request_time + expires_in - SPARSE_TIME_IN_MILLIS
+        @expiration_time = request_time + expires_in - SPARSE_TIME_IN_MILLIS
         @access_token = AccessToken.new(token_value, token_type, expires_in)
       end
       @access_token

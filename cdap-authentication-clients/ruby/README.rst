@@ -35,14 +35,14 @@ If you use the gem outside Rails, you should require gem files in your applicati
 
 Examples
 ========
-Create a ``CDAPIngest::AuthenticationClient`` instance::
+Create a ``CDAP::AuthenticationClient`` instance::
 
-  authentication_client = CDAPIngest::AuthenticationClient.new
+  authentication_client = CDAP::AuthenticationClient.new
 
 Set the connection parameters (authentication server host, authentication server host
 port, SSL mode)::
 
-  authentication_client.set_connection_info('localhost',10000, true)
+  authentication_client.set_connection_info('localhost', 11015, true)
 
 Create the configuration file::
 
@@ -55,6 +55,10 @@ Load the configuration from the file::
 
   config = YAML.load_file('spec/auth.yml')
 
+Setting the configuration in Ruby::
+
+  config = { 'security.auth.client.username' => 'admin', 'security.auth.client.password' => 'secret', 'security.auth.client.ssl_cert_check' => true }
+
 Configure the authentication client::
 
   authentication_client.configure(config)
@@ -62,7 +66,7 @@ Configure the authentication client::
 Check if authentication is enabled in the gateway server::
 
   is_enabled = authentication_client.is_auth_enabled
-                    
+
 Retrieve the access token from the authentication server::
 
   token = authentication_client.get_access_token
