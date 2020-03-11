@@ -31,7 +31,7 @@ class RestClientUtils:
 
     @staticmethod
     def verify_response_code(response_code):
-        if response_code is hl.OK:
+        if (hl.__name__ is 'httplib' and response_code is hl.OK) or (hl.__name__ is 'http.client' and response_code is hl.OK.value):
             LOG.debug("Success operation result code.")
             return
         else:
